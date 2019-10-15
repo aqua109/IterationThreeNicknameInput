@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
 
@@ -28,3 +28,9 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
+
+
+class NicknameForm(FlaskForm):
+    nickname = StringField('Nickname', validators=[DataRequired()])
+    colour = SelectField('Colour', choices=[("aqua", "aqua"), ("black", "black"), ("blue", "blue"), ("brown", "brown"), ("cyan", "cyan"), ("darkblue", "darkblue"), ("fuchsia", "fuchsia"), ("green", "green"), ("grey", "grey"), ("lightblue", "lightblue"), ("lime", "lime"), ("magenta", "magenta"), ("maroon", "maroon"), ("navy", "navy"), ("olive", "olive"), ("orange", "orange"), ("purple", "purple"), ("red", "red"), ("silver", "silver"), ("teal", "teal"), ("white", "white"), ("yellow", "yellow")])
+    submit = SubmitField('Submit')
