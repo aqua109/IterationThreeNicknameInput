@@ -1,5 +1,4 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
 from app import db
 from flask_login import UserMixin
 from app import login
@@ -24,14 +23,3 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-
-
-class Contact(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    childName = db.Column(db.String(120))
-    familyName = db.Column(db.String(120))
-    caregiver = db.Column(db.String(120))
-    mobile = db.Column(db.String(20))
-
-    def __repr__(self):
-        return '<Child {}>'.format(self.childName)

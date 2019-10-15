@@ -2,52 +2,8 @@
 
 {% block content %}
     <head>
-        <!--<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
-        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-        <style type='text/css'>
-            .row-index {
-                width: 50px;
-                display: inline-block;
-            }
-            .form-group {
-                padding-top: 25px;
-            }
-        </style>
-
-        <script type='text/javascript'>
-            $(window).load(function(){
-                var data = {{data|tojson}};
-                var columns = {{columns|tojson}};
-
-                $(function() {
-                    $('#table').bootstrapTable({
-                        data: data,
-                        columns: columns,
-                    });
-                });
-            });
-        </script>
     </head>
     <body>
-        <div class="container">
-            <div class="upload">
-                <p id="current-file-label">Current APT Contact File: {{ latest_file }}</p>
-                <a class="upload-btn btn btn-primary" href="{{ url_for('upload_form') }}" role="button">Upload</a>
-            </div>
-
-            <div id="toolbar"></div>
-            <table
-                id="table"
-                data-search="true"
-                data-height="500">
-            </table>
-            <form method="post" action="/send_message", enctype="multipart/form-data">
-                <div class="form-group">
-                    <textarea class="form-control" id="messageForCaregiver" rows="3" placeholder="Please enter your message here" name="text"></textarea>
-                </div>
-                <button class="btn btn-primary" type="submit">Send message</button>
-            </form>
-        </div>
+        <p>Welcome</p>
     </body>
 {% endblock %}
